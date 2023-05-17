@@ -22,10 +22,3 @@ function multiplyNumbersInArr(arr, num) {
 }
 
 console.log(factorial(20));
-// 321*5 = 615
-// 456 * 9 =  4104
-// [6,5,4] * 9
-// [4] zvysok 5
-// [4,0] zv 5
-// [4,0,1] zv 4
-// [4,0,1,4]
