@@ -5,8 +5,8 @@ function fibSlow(n) {
   return fibSlow(n - 1) + fibSlow(n - 2);
 }
 
-console.log(fibSlow(5));
-console.log(fibSlow(40));
+// console.log(fibSlow(5));
+// console.log(fibSlow(40));
 
 // Memo (Top-Down )
 
@@ -18,24 +18,30 @@ function fibMemo(n, memo = { 0: 0, 1: 1 }) {
   return memo[n];
 }
 
-console.log(fibMemo(5));
-console.log(fibMemo(100));
+// console.log(fibMemo(5));
+// console.log(fibMemo(100));
 
 // Tabulation - Bottom-up
 
 function fibTabu(n) {
-  let arr = new Array(n + 1);
+  let arr = new Array(n + 1).fill(0);
   arr[0] = 0;
   arr[1] = 1;
 
-  for (let i = 2; i <= n; i++) {
-    arr[i] = arr[i - 1] + arr[i - 2];
+  for (let i = 0; i < n; i++) {
+    if (i + 2 <= n) {
+      arr[i + 1] += arr[i];
+      arr[i + 2] += arr[i];
+    } else {
+      arr[i + 1] += arr[i];
+    }
   }
+  console.log(arr);
   return arr[n];
 }
 
 console.log(fibTabu(5));
-console.log(fibTabu(100));
+console.log(fibTabu(50));
 
 // Tabulation imrpoved
 
@@ -52,5 +58,5 @@ function fibTabu2(n) {
   return previous;
 }
 
-console.log(fibTabu2(5));
-console.log(fibTabu2(100));
+// console.log(fibTabu2(5));
+// console.log(fibTabu2(100));
