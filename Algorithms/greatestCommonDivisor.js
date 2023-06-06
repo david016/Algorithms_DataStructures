@@ -35,12 +35,16 @@ function GCDEuclidianOptimised(a, b) {
     if (bigger % smaller === 0) {
       return smaller;
     }
-    let temp1 = smaller;
-    smaller = bigger % smaller;
-    bigger = temp1;
-    // [smaller, bigger] = [bigger % smaller, smaller];
+    [smaller, bigger] = [bigger % smaller, smaller];
   }
   return smaller;
 }
-console.log(GCDEuclidianOptimised(100, 75));
-console.log(GCDEuclidianOptimised(24, 16));
+
+function GCDBest(a, b) {
+  if (b === 0) {
+    return a;
+  }
+  return GCDBest(b, a % b);
+}
+
+console.log(GCDBest(28, 17));
