@@ -11,5 +11,36 @@ function greatestCommonDivisorNaive(a, b) {
   return divisor;
 }
 
-console.log(greatestCommonDivisorNaive(75, 100));
-console.log(greatestCommonDivisorNaive(12, 8));
+function GCDEuclidian(a, b) {
+  let smaller = Math.min(a, b);
+  let bigger = Math.max(a, b);
+
+  while (smaller !== 1) {
+    if (bigger % smaller === 0) {
+      return smaller;
+    }
+
+    let temp1 = bigger - smaller;
+    bigger = Math.max(smaller, temp1);
+    smaller = Math.min(smaller, temp1);
+  }
+  return smaller;
+}
+
+function GCDEuclidianOptimised(a, b) {
+  let smaller = Math.min(a, b);
+  let bigger = Math.max(a, b);
+
+  while (smaller !== 1) {
+    if (bigger % smaller === 0) {
+      return smaller;
+    }
+    let temp1 = smaller;
+    smaller = bigger % smaller;
+    bigger = temp1;
+    // [smaller, bigger] = [bigger % smaller, smaller];
+  }
+  return smaller;
+}
+console.log(GCDEuclidianOptimised(100, 75));
+console.log(GCDEuclidianOptimised(24, 16));
