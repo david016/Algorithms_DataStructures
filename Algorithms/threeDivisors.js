@@ -1,6 +1,8 @@
 // Given a positive integer value N. The task is to find how many numbers
 // less than or equal to N have numbers of divisors exactly equal to 3.
 
+// It's the same as finding how many prime numbers are til sqrt(n)
+
 function threeDivisors(N) {
   let counter = 0;
   for (let i = 4; i <= N; i++) {
@@ -28,4 +30,14 @@ function isPrime2(n) {
   }
 
   return true;
+}
+
+function countPrimes(N) {
+  let counter = 0;
+  for (let i = 2; i * i <= N; i++) {
+    if (isPrime2(i)) {
+      counter++;
+    }
+  }
+  return counter;
 }
