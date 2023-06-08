@@ -21,3 +21,8 @@ function gPTerm(a, b, n) {
   }
   return temp;
 }
+
+function gpTermFaster(A, B, N) {
+  const ratio = B / A;
+  return A * Math.pow(ratio, N - 1);
+}
