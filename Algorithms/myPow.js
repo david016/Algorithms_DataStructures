@@ -24,3 +24,17 @@ function pow(base, exponent) {
 
   return result;
 }
+
+function myPow(base, exponent) {
+  if (exponent === 0) return 1;
+
+  let temp = myPow(base, Math.floor(exponent / 2));
+  temp = temp * temp;
+  if (exponent % 2 === 0) {
+    return temp;
+  } else {
+    return temp * base;
+  }
+}
+
+console.log(myPow(3, 4));
