@@ -4,7 +4,7 @@ function allPrimesNaive(num) {
   }
 }
 
-allPrimesNaive(24);
+// allPrimesNaive(24);
 
 function isPrime2(num) {
   if (num == 1) return false;
@@ -19,3 +19,35 @@ function isPrime2(num) {
 
   return true;
 }
+
+// sieve of eratosthenes
+function allPrimesErato(num) {
+  let nums = new Array(num + 1).fill(true);
+  for (let i = 2; i * i <= num; i++) {
+    if (nums[i]) {
+      for (let j = i * 2; j <= num; j += i) {
+        nums[j] = false;
+      }
+    }
+  }
+  for (let i = 2; i < num; i++) {
+    if (nums[i]) {
+      console.log(i);
+    }
+  }
+}
+
+// allPrimesErato(35);
+function allPrimesErato2(num) {
+  let nums = new Array(num + 1).fill(true);
+  for (let i = 2; i <= num; i++) {
+    if (nums[i]) {
+      console.log(i);
+      for (let j = i * i; j <= num; j += i) {
+        nums[j] = false;
+      }
+    }
+  }
+}
+
+allPrimesErato2(100);
