@@ -5,10 +5,12 @@
 // because it will set the bit even if the bit is unset
 // previously in binary representation of number 'num'.
 
+function setBit(number, position) {
+  let bitMask = 1 << (position - 1);
+  return bitMask | number;
+}
 // 5 - 101 --> 7 - 111
-let num = 5;
-num = (1 << 1) | num;
-console.log(num);
+console.log(`Setting 101 to 111: ${setBit(5, 2)}`);
 
 // How to unset/clear a bit at n'th position in the number 'num'
 
@@ -20,23 +22,43 @@ console.log(num);
 // we will 'AND'(&) with the number 'num' that will unset bit at
 // nth position.
 
+function unsetBit(number, position) {
+  let bitMask = 1 << (position - 1);
+  return number & bitMask;
+}
 // 6 - 110 --> 4 - 100
-let num2 = 6;
-//  (1 << 1) <=> ...010
-// ~(1 << 1) <=> ...101
-num2 = ~(1 << 1) & num2;
-console.log(num2);
+console.log(`Unsetting 110 to 100: ${unsetBit(6, 3)}`);
 
 // Toggling a bit at nth position : Toggling means to turn bit
 // 'on'(1) if it was 'off'(0) and to turn 'off'(0) if it was 'on'
 // (1) previously. We will be using 'XOR' operator here
-
+function bitTogling(number, position) {
+  let bitMask = 1 << (position - 1);
+  return number ^ bitMask;
+}
 // 10 -> 1010
 // 2  -> 0010
 let num3 = 10;
 let num4 = 2;
-// 1000
-let bitMask = 1 << 3;
+console.log(`Bit togling 1010 to 0010 ${bitTogling(10, 4)}`); //0010
+console.log(`Bit togling 0010 to 1010 ${bitTogling(2, 4)}`); //0010
 
-console.log(num3 ^ bitMask);
-console.log(num4 ^ bitMask);
+// Checking if bit at nth position is set or unset:
+// 1) Left shift given number 1 by n-1 to create a number that has
+// only set bit as n-th bit. temp = 1 << (n-1)
+// 2) If bitwise AND of n and temp is non-zero, then result is
+// SET else result is NOT SET. The bitwise AND should be between
+// number, temp. As n is the bit here, not number. Simply, if
+// (N & (1 << k)) > 0) its "Set".
+function isSet(number, position) {
+  let temp = 1 << (position - 1);
+  if ((number & temp) > 0) {
+    console.log("Set");
+    return true;
+  } else {
+    console.log("Unset");
+    return false;
+  }
+}
+
+console.log(isSet(10, 4));
