@@ -17,3 +17,20 @@ function isPowerOf2Clever(number) {
 }
 console.log(isPowerOf2Clever(8)); // 1000
 console.log(isPowerOf2Clever(3)); // 0011
+
+// Given a number N, find the most significant set bit in
+// the given number.
+function mostSignificantBit(num) {
+  // 42 (101010) -> 32 (100000)
+  return 1 << findLog(num);
+}
+
+console.log(mostSignificantBit(42));
+
+function findLog(num) {
+  let counter = 0;
+  while ((num >>= 1)) {
+    counter++;
+  }
+  return counter;
+}
