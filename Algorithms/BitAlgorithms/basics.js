@@ -60,5 +60,27 @@ function isSet(number, position) {
     return false;
   }
 }
-
 console.log(isSet(10, 4));
+
+function divideBy2(num) {
+  return num >> 1;
+}
+console.log(divideBy2(9));
+
+function multiplyBy2(num) {
+  return num << 1;
+}
+console.log(multiplyBy2(9));
+
+// Find log base 2 of a 32 bit integer:
+function findLog(num) {
+  let counter = 0;
+  while ((num >>= 1)) {
+    // num = num >> 1
+    counter++;
+  }
+  return counter;
+}
+console.log("Log 15 base 2: ", findLog(15));
+console.log("Log 16 base 2: ", findLog(16));
+console.log("Log 17 base 2: ", findLog(17));
