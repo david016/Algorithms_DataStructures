@@ -84,3 +84,26 @@ function findLog(num) {
 console.log("Log 15 base 2: ", findLog(15));
 console.log("Log 16 base 2: ", findLog(16));
 console.log("Log 17 base 2: ", findLog(17));
+
+function flipBits(num) {
+  let numBits = 0;
+  let temp = num;
+
+  while (temp !== 0) {
+    temp >>= 1;
+    numBits++;
+  }
+
+  let mask = (1 << numBits) - 1;
+  return num ^ mask;
+}
+console.log("Fliping 42 to 21: ", flipBits(42));
+
+function swapNums(a, b) {
+  a ^= b; // 010
+  b ^= a; // 111
+  a ^= b; // 101
+  console.log("a:", a);
+  console.log("b:", b);
+}
+swapNums(5, 7);
