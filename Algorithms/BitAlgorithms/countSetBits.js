@@ -101,4 +101,32 @@ function totalSetBits2(num) {
   }
   return res;
 }
-console.log(totalSetBits2(4));
+console.log(totalSetBits2(5));
+console.log(totalSetBits2(10));
+
+// optimal solution
+function countSetBitsOptimal(num) {
+  //Ignoring 0 as all the bits are unset.
+  num++;
+  let count = 0;
+
+  //Counting set bits from 1 to n.
+  for (let x = 2; x / 2 < num; x = x * 2) {
+    //Total count of pairs of 0s and 1s.
+    let quotient = Math.floor(num / x);
+    //quotient gives the complete count of pairs of 1s.
+    //Multiplying it with the (current power of 2)/2 will give
+    //the count of 1s in the current bit.
+    count += quotient * (x / 2);
+
+    let remainder = num % x;
+    //If the count of pairs is odd then we add the remaining 1s
+    //which could not be grouped together.
+    if (remainder > x / 2) count += remainder - x / 2;
+  }
+
+  //returning count of set bits.
+  return count;
+}
+console.log(countSetBitsOptimal(5));
+console.log(countSetBitsOptimal(10));
