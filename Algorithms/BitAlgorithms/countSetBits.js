@@ -46,13 +46,13 @@ console.log(countSetBitsWithtable(31));
 console.log(countSetBitsWithtable(255));
 console.log(countSetBitsWithtable(256));
 
-// 000 001 010 011 100 101 110 111
-//      1        3             8
+// count   1        3             8
 // 0 1     2    3    4    5    6    7
 // 0 0001 0010 0011 0100 0101 0110 0111
-// 00 01 10 11 24 8*log8 /2
+
 //  8    9    10   11   12   13   14   15
 // 1000 1001 1010 1011 1100 1101 1110 1111
+
 // You are given a number N. Find the total count of set bits
 // for all numbers from 1 to N(both inclusive).
 function totalSetBits(N) {
