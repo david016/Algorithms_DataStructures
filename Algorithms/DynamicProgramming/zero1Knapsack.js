@@ -3,6 +3,8 @@ function knapsack(profits, weights, remainingWeight, numOfElemets) {
     return 0;
   }
 
+  // if the last element's weight is biger then remaining weight =>
+  // "remove" the last element
   if (weights[numOfElemets - 1] > remainingWeight) {
     return knapsack(profits, weights, remainingWeight, numOfElemets - 1);
   } else {
@@ -93,3 +95,25 @@ console.log(
     {}
   )
 );
+
+function knapsackTabulation(profits, weights, maxWeight) {
+  const numberOfItems = profits.length;
+  const table = new Array(numberOfItems + 1)
+    .fill(0)
+    .map(() => new Array(maxWeight + 1).fill(0));
+
+  for (let i = 1; i <= numberOfItems; i++) {
+    for (let w = 1; w <= maxWeight; w++) {
+      if (weights[i - 1] <= w) {
+        table[i][w] = Math.max(
+          profits[i - 1] + table[i - 1][w - weights[i - 1]],
+          table[i - 1][w]
+        );
+      } else {
+        table[i][w] = table[i - 1][w];
+      }
+    }
+  }
+
+  return table[numberOfItems][maxWeight];
+}
